@@ -10,6 +10,7 @@ const initialState = {
   cardAttr3: '0',
   cardImage: '',
   cardRare: 'normal',
+  cardTrunfo: false,
   isSaveButtonDisabled: true,
 };
 
@@ -26,6 +27,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       deck: [],
     };
@@ -51,7 +53,9 @@ class App extends React.Component {
 
   onSaveButtonClick(event) {
     event.preventDefault();
+    const { cardTrunfo } = this.state;
     this.setState({ deck: this.createNewDeckArray() }, () => {
+      if (cardTrunfo === true) this.setState({ hasTrunfo: true });
       this.setState(initialState);
     });
   }
@@ -139,6 +143,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
     return (
       <div>
@@ -152,6 +157,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
