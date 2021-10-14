@@ -18,12 +18,19 @@ class App extends React.Component {
       isSaveButtonDisabled: false,
     };
 
-    this.verifyInputsAreFiled = this.verifyInputsAreFiled.bind(this);
+    this.verifyIfInputsAreFiled = this.verifyIfInputsAreFiled.bind(this);
+    this.verifyAttributesSum = this.verifyAttributesSum.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  
-  verifyInputsAreFiled(){
+  verifyAttributesSum(){
+    const max = 210;
+    const { cardAttr1, cardAttr2, cardAttr3} = this.state;
+    const atributeSum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+
+    return (atributeSum < max);
+  }
+  verifyIfInputsAreFiled(){
     const stateValues = Object.values(this.state);
     const stringValues = stateValues.filter((value) => typeof value === 'string')
     const inputsAreFiled = stringValues.every((value) => value)
@@ -35,7 +42,7 @@ class App extends React.Component {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
     this.setState({ [name]: value });
-    this.verifyInputsAreFiled();
+    console.log(this.verifyAttributesSum());
   }
 
   onSaveButtonClick() {
