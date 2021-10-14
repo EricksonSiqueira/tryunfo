@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 
 class DeckOfCards extends React.Component {
-  creatCardUsingObj(cardObj) {
+  creatCardUsingObj(cardObj, buttonFunction) {
     const { cardName,
       cardDescription,
       cardAttr1,
@@ -26,17 +26,20 @@ class DeckOfCards extends React.Component {
         cardRare={ cardRare }
         cardTrunfo={ cardTrunfo }
         hasButton
+        onDeleteButtonClick={ buttonFunction }
       />
     );
   }
 
   render() {
-    const { deck } = this.props;
+    const { deck, onDeleteButtonClick } = this.props;
     return (
       <section>
         <h1>Todas as cartas</h1>
         {
-          deck.map((cardObj) => this.creatCardUsingObj(cardObj))
+          deck.map((cardObj, index) => this.creatCardUsingObj(cardObj, () => {
+            onDeleteButtonClick(index);
+          }))
         }
       </section>
     );
@@ -45,6 +48,8 @@ class DeckOfCards extends React.Component {
 
 DeckOfCards.propTypes = {
   deck: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onDeleteButtonClick: PropTypes.func.isRequired,
+
 };
 
 export default DeckOfCards;

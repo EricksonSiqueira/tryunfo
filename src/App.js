@@ -41,6 +41,7 @@ class App extends React.Component {
     this.createCardObj = this.createCardObj.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.createNewDeckArray = this.createNewDeckArray.bind(this);
+    this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -59,6 +60,27 @@ class App extends React.Component {
       if (cardTrunfo === true) this.setState({ hasTrunfo: true });
       this.setState(initialState);
     });
+  }
+
+  onDeleteButtonClick(index) {
+    const { deck } = this.state;
+    const enableTrunfo = this.verifyIfCardIsTryunfo(index, deck);
+    this.setState({ hasTrunfo: !enableTrunfo });
+    this.setState((previousState) => ({
+      deck: this.removeCardFromDeck(index, previousState.deck),
+    }));
+  }
+
+  removeCardFromDeck(deletedCardIndex, deck) {
+    const newDeck = deck.filter((_cardObj, index) => index !== deletedCardIndex);
+    return newDeck;
+  }
+
+  verifyIfCardIsTryunfo(deletedCardIndex, deck) {
+    const card = deck.find((_cardObj, index) => index === deletedCardIndex);
+    const isTryunfo = card.cardTrunfo;
+
+    return isTryunfo;
   }
 
   createNewDeckArray() {
@@ -175,7 +197,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           hasButton={ false }
         />
-        <DeckOfCards deck={ deck } />
+        <DeckOfCards deck={ deck } onDeleteButtonClick={ this.onDeleteButtonClick } />
       </div>
     );
   }
