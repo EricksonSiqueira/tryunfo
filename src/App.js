@@ -15,24 +15,36 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
 
     this.verifyIfInputsAreFiled = this.verifyIfInputsAreFiled.bind(this);
     this.verifyAttributesSum = this.verifyAttributesSum.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.verifyAttributesMaxValue = this.verifyAttributesMaxValue.bind(this);
+    this.toggleSaveButton = this.toggleSaveButton.bind(this);
   }
 
   onInputChange({ target }) {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
-    this.setState({ [name]: value });
-    this.verifyAttributesMaxValue();
+    this.setState({ [name]: value }, () => {
+      this.setState({ isSaveButtonDisabled: this.toggleSaveButton() });
+    });
   }
 
   onSaveButtonClick() {
     console.log('clicou');
+  }
+
+  toggleSaveButton() {
+    const buttonShouldBeDisable = !(
+      this.verifyAttributesMaxValue()
+      && this.verifyAttributesSum()
+      && this.verifyIfInputsAreFiled()
+    );
+
+    return buttonShouldBeDisable;
   }
 
   verifyAttributesMaxValue() {
@@ -46,7 +58,8 @@ class App extends React.Component {
     ];
     const attrAreUnderMaxValue = cardAttributesArr
       .every((attribute) => (attribute <= max && attribute >= min));
-    console.log(attrAreUnderMaxValue);
+
+    return attrAreUnderMaxValue;
   }
 
   verifyAttributesSum() {
@@ -54,7 +67,7 @@ class App extends React.Component {
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const atributeSum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
 
-    return (atributeSum < max);
+    return (atributeSum <= max);
   }
 
   verifyIfInputsAreFiled() {
