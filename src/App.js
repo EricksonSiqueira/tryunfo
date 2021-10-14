@@ -13,18 +13,29 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: false,
     };
 
+    this.verifyInputsAreFiled = this.verifyInputsAreFiled.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+  }
+
+  
+  verifyInputsAreFiled(){
+    const stateValues = Object.values(this.state);
+    const stringValues = stateValues.filter((value) => typeof value === 'string')
+    const inputsAreFiled = stringValues.every((value) => value)
+    
+    return inputsAreFiled;
   }
 
   onInputChange({ target }) {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
     this.setState({ [name]: value });
+    this.verifyInputsAreFiled();
   }
 
   onSaveButtonClick() {
