@@ -5,26 +5,12 @@ import Card from './Card';
 class DeckOfCards extends React.Component {
   creatCardUsingObj(cardObj, buttonFunction) {
     const { cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
     } = cardObj;
 
     return (
       <Card
         key={ cardName }
-        cardName={ cardName }
-        cardDescription={ cardDescription }
-        cardAttr1={ cardAttr1 }
-        cardAttr2={ cardAttr2 }
-        cardAttr3={ cardAttr3 }
-        cardImage={ cardImage }
-        cardRare={ cardRare }
-        cardTrunfo={ cardTrunfo }
+        { ...cardObj }
         hasButton
         onDeleteButtonClick={ buttonFunction }
       />
