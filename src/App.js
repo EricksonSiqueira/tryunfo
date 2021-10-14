@@ -21,17 +21,32 @@ class App extends React.Component {
     this.verifyIfInputsAreFiled = this.verifyIfInputsAreFiled.bind(this);
     this.verifyAttributesSum = this.verifyAttributesSum.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.verifyAttributesMaxValue = this.verifyAttributesMaxValue.bind(this);
   }
 
   onInputChange({ target }) {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
     this.setState({ [name]: value });
-    console.log(this.verifyAttributesSum());
+    this.verifyAttributesMaxValue();
   }
 
   onSaveButtonClick() {
     console.log('clicou');
+  }
+
+  verifyAttributesMaxValue() {
+    const max = 90;
+    const min = 0;
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const cardAttributesArr = [
+      Number(cardAttr1),
+      Number(cardAttr2),
+      Number(cardAttr3),
+    ];
+    const attrAreUnderMaxValue = cardAttributesArr
+      .every((attribute) => (attribute <= max && attribute >= min));
+    console.log(attrAreUnderMaxValue);
   }
 
   verifyAttributesSum() {
