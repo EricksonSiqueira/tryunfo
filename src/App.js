@@ -40,7 +40,6 @@ class App extends React.Component {
     this.toggleSaveButton = this.toggleSaveButton.bind(this);
     this.createCardObj = this.createCardObj.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-    this.createNewDeckArray = this.createNewDeckArray.bind(this);
     this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
   }
 
@@ -50,13 +49,12 @@ class App extends React.Component {
     this.setState({ [name]: value }, () => {
       this.setState({ isSaveButtonDisabled: this.toggleSaveButton() });
     });
-    this.createCardObj();
   }
 
   onSaveButtonClick(event) {
     event.preventDefault();
-    const { cardTrunfo } = this.state;
-    this.setState({ deck: this.createNewDeckArray() }, () => {
+    const { cardTrunfo, deck } = this.state;
+    this.setState({ deck: this.createNewDeckArray(deck) }, () => {
       if (cardTrunfo === true) this.setState({ hasTrunfo: true });
       this.setState(initialState);
     });
@@ -83,8 +81,7 @@ class App extends React.Component {
     return isTryunfo;
   }
 
-  createNewDeckArray() {
-    const { deck } = this.state;
+  createNewDeckArray(deck) {
     const newDeck = [...deck, this.createCardObj()];
 
     return newDeck;
@@ -111,6 +108,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
     };
+
     return cardObj;
   }
 
