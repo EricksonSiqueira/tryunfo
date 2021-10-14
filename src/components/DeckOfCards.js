@@ -25,6 +25,7 @@ class DeckOfCards extends React.Component {
         cardImage={ cardImage }
         cardRare={ cardRare }
         cardTrunfo={ cardTrunfo }
+        hasButton
       />
     );
   }

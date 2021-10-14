@@ -173,6 +173,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasButton={ false }
         />
         <DeckOfCards deck={ deck } />
       </div>

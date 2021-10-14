@@ -12,18 +12,22 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasButton,
     } = this.props;
 
     return (
       <article>
-        <h2 data-testid="name-card">{ cardName }</h2>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <p data-testid="description-card">{ cardDescription }</p>
-        <p data-testid="attr1-card">{ cardAttr1 }</p>
-        <p data-testid="attr2-card">{ cardAttr2 }</p>
-        <p data-testid="attr3-card">{cardAttr3}</p>
-        <span data-testid="rare-card">{cardRare}</span>
-        {cardTrunfo === true && <span data-testid="trunfo-card">Super Trunfo</span>}
+        <div>
+          <h2 data-testid="name-card">{cardName}</h2>
+          <img data-testid="image-card" src={ cardImage } alt={ cardName } />
+          <p data-testid="description-card">{cardDescription}</p>
+          <p data-testid="attr1-card">{cardAttr1}</p>
+          <p data-testid="attr2-card">{cardAttr2}</p>
+          <p data-testid="attr3-card">{cardAttr3}</p>
+          <span data-testid="rare-card">{cardRare}</span>
+          {cardTrunfo === true && <span data-testid="trunfo-card">Super Trunfo</span>}
+        </div>
+        {hasButton === true && <button type="button">Excluir</button>}
       </article>
     );
   }
@@ -38,6 +42,7 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  hasButton: PropTypes.bool.isRequired,
 };
 
 export default Card;
