@@ -2,6 +2,17 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 
+const initialState = {
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
+  cardImage: '',
+  cardRare: 'normal',
+  isSaveButtonDisabled: true,
+};
+
 class App extends React.Component {
   constructor() {
     super();
@@ -9,13 +20,14 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      deck: [],
     };
 
     this.verifyIfInputsAreFiled = this.verifyIfInputsAreFiled.bind(this);
@@ -23,6 +35,9 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.verifyAttributesMaxValue = this.verifyAttributesMaxValue.bind(this);
     this.toggleSaveButton = this.toggleSaveButton.bind(this);
+    this.createCardObj = this.createCardObj.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.createNewDeckArray = this.createNewDeckArray.bind(this);
   }
 
   onInputChange({ target }) {
@@ -31,10 +46,45 @@ class App extends React.Component {
     this.setState({ [name]: value }, () => {
       this.setState({ isSaveButtonDisabled: this.toggleSaveButton() });
     });
+    this.createCardObj();
   }
 
-  onSaveButtonClick() {
-    console.log('clicou');
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    this.setState({ deck: this.createNewDeckArray() }, () => {
+      this.setState(initialState);
+    });
+  }
+
+  createNewDeckArray() {
+    const { deck } = this.state;
+    const newDeck = [...deck, this.createCardObj()];
+
+    return newDeck;
+  }
+
+  createCardObj() {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const cardObj = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+    return cardObj;
   }
 
   toggleSaveButton() {
