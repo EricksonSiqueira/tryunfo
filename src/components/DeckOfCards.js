@@ -8,6 +8,7 @@ class DeckOfCards extends React.Component {
 
     this.state = {
       filterInputTxt: '',
+      cardRareFilterValue: 'todas',
     };
 
     this.onInputFilterChange = this.onInputFilterChange.bind(this);
@@ -34,7 +35,7 @@ class DeckOfCards extends React.Component {
 
   render() {
     const { deck, onDeleteButtonClick } = this.props;
-    const { filterInputTxt } = this.state;
+    const { filterInputTxt, cardRareFilterValue } = this.state;
     return (
       <section>
         <div>
@@ -45,15 +46,33 @@ class DeckOfCards extends React.Component {
             type="text"
             onChange={ this.onInputFilterChange }
           />
+          <select
+            data-testid="rare-filter"
+            name="cardRareFilterValue"
+            id="cardRareFilterValue"
+            value={ cardRareFilterValue }
+            onChange={ this.onInputFilterChange }
+          >
+            <option value="todas">todas</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+          </select>
         </div>
         <h1>Todas as cartas</h1>
         {
           deck.map((cardObj, index) => {
-            if (cardObj.cardName.includes(filterInputTxt)) {
+            const rarityFilterBool = cardRareFilterValue === 'todas'
+              ? true
+              : cardObj.cardRare === cardRareFilterValue;
+
+            if (cardObj.cardName.includes(filterInputTxt)
+              && rarityFilterBool) {
               return (this.creatCardUsingObj(cardObj, () => {
                 onDeleteButtonClick(index);
               }));
             }
+
             return '';
           })
         }
