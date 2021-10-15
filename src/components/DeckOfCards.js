@@ -9,13 +9,15 @@ class DeckOfCards extends React.Component {
     this.state = {
       filterInputTxt: '',
       cardRareFilterValue: 'todas',
+      cardTrunfoFilterValue: '',
     };
 
     this.onInputFilterChange = this.onInputFilterChange.bind(this);
   }
 
   onInputFilterChange({ target }) {
-    const { name, value } = target;
+    const { name } = target;
+    const value = (target.type === 'checkbox') ? target.checked : target.value;
     this.setState({ [name]: value });
   }
 
@@ -35,7 +37,7 @@ class DeckOfCards extends React.Component {
 
   render() {
     const { deck, onDeleteButtonClick } = this.props;
-    const { filterInputTxt, cardRareFilterValue } = this.state;
+    const { filterInputTxt, cardRareFilterValue, cardTrunfoFilterValue } = this.state;
     return (
       <section>
         <div>
@@ -58,6 +60,18 @@ class DeckOfCards extends React.Component {
             <option value="raro">Raro</option>
             <option value="muito raro">Muito raro</option>
           </select>
+
+          <label htmlFor="super-tryunfo">
+            Super trunfo
+            <input
+              data-testid="trunfo-filter"
+              type="checkbox"
+              name="cardTrunfoFilterValue"
+              checked={ cardTrunfoFilterValue }
+              onChange={ this.onInputFilterChange }
+              id="cardTrunfoFilterValue"
+            />
+          </label>
         </div>
         <h1>Todas as cartas</h1>
         {
@@ -66,8 +80,15 @@ class DeckOfCards extends React.Component {
               ? true
               : cardObj.cardRare === cardRareFilterValue;
 
-            if (cardObj.cardName.includes(filterInputTxt)
-              && rarityFilterBool) {
+            const trunfoFilterBool = !cardTrunfoFilterValue
+              ? true
+              : cardObj.cardTrunfo === true;
+
+            if (
+              cardObj.cardName.includes(filterInputTxt)
+              && rarityFilterBool
+              && trunfoFilterBool
+            ) {
               return (this.creatCardUsingObj(cardObj, () => {
                 onDeleteButtonClick(index);
               }));
