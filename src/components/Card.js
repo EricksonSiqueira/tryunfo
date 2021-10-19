@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Attribute from './Attribute';
 
 class Card extends React.Component {
   render() {
@@ -29,9 +30,21 @@ class Card extends React.Component {
             <div className="card-txt">
               <h2 data-testid="name-card">{cardName}</h2>
               <p data-testid="description-card">{cardDescription}</p>
-              <p data-testid="attr1-card">{cardAttr1}</p>
-              <p data-testid="attr2-card">{cardAttr2}</p>
-              <p data-testid="attr3-card">{cardAttr3}</p>
+              <Attribute
+                data-testid="attr1-card"
+                cardAttr={ cardAttr1 }
+                attrName="Poder de ataque"
+              />
+              <Attribute
+                data-testid="attr1-card"
+                cardAttr={ cardAttr2 }
+                attrName="Poder de habilidade"
+              />
+              <Attribute
+                data-testid="attr1-card"
+                cardAttr={ cardAttr3 }
+                attrName="Defesa"
+              />
               <span data-testid="rare-card">{cardRare}</span>
               {cardTrunfo === true && <span data-testid="trunfo-card">Super Trunfo</span>}
             </div>
