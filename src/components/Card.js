@@ -28,8 +28,18 @@ class Card extends React.Component {
               alt={ cardName }
             />
             <div className="card-txt">
-              <h2 data-testid="name-card">{cardName}</h2>
-              <p data-testid="description-card">{cardDescription}</p>
+              <h2
+                data-testid="name-card"
+                className="card-name"
+              >
+                {cardName}
+              </h2>
+              <p
+                data-testid="description-card"
+                className="card-description"
+              >
+                { cardDescription }
+              </p>
               <Attribute
                 data-testid="attr1-card"
                 cardAttr={ cardAttr1 }
@@ -45,7 +55,12 @@ class Card extends React.Component {
                 cardAttr={ cardAttr3 }
                 attrName="Defesa"
               />
-              <span data-testid="rare-card">{cardRare}</span>
+              <span
+                data-testid="rare-card"
+                className="card-rarity"
+              >
+                {cardRare}
+              </span>
               {cardTrunfo === true && <span data-testid="trunfo-card">Super Trunfo</span>}
             </div>
           </div>

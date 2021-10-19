@@ -95,10 +95,10 @@ h1{
 }
 
 .card-txt {
-  width: 340px;
+  width: 320px;
   height: 50%;
   color: black;
-  left: -1px;
+  left: 5px;
   bottom: 0;
   background-color: #fff;
   position: absolute;
@@ -108,9 +108,27 @@ h1{
   justify-content: space-between;
 }
 
+.card-name {
+  border-bottom: 1px solid #101010;
+  max-width: 80%;
+}
+
+.card-description {
+  max-width: 100%;
+}
+
 .card-attribute {
   width: 90%;
   height: 10%;
   display: flex;
   justify-content: space-between;
 }
+
+.card-rarity {
+  background-color: #320EEB;
+  border-radius: 15px;
+  padding: 3px 15px;
+  color: #fff;
+}
+
+
