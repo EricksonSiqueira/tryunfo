@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
@@ -43,27 +44,35 @@ class DeckOfCards extends React.Component {
         <div className="card-filter-form">
           <h4>Filtro de busca</h4>
           <input
+            className="form-control"
+            placeholder="filtro"
             data-testid="name-filter"
             name="filterInputTxt"
             type="text"
             onChange={ this.onInputFilterChange }
           />
           <select
+            className="form-select"
             data-testid="rare-filter"
             name="cardRareFilterValue"
             id="cardRareFilterValue"
             value={ cardRareFilterValue }
             onChange={ this.onInputFilterChange }
           >
-            <option value="todas">todas</option>
+            <option value="todas">Todas</option>
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
             <option value="muito raro">Muito raro</option>
           </select>
-
-          <label htmlFor="super-tryunfo">
-            Super trunfo
+          <div className="form-check">
+            <label
+              htmlFor="cardTrunfoFilterValue"
+              className="form-check-label"
+            >
+              Super trunfo
+            </label>
             <input
+              className="form-check-input"
               data-testid="trunfo-filter"
               type="checkbox"
               name="cardTrunfoFilterValue"
@@ -71,7 +80,7 @@ class DeckOfCards extends React.Component {
               onChange={ this.onInputFilterChange }
               id="cardTrunfoFilterValue"
             />
-          </label>
+          </div>
         </div>
         <div className="deck-of-cards">
           <h1>Todas as cartas</h1>
