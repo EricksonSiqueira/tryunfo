@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import DeckOfCards from './components/DeckOfCards';
+import './App.css';
 
 const defaultState = {
   cardName: '',
@@ -158,17 +159,22 @@ class App extends React.Component {
       deck,
     } = this.state;
     return (
-      <div>
+      <div className="app">
         <h1>Tryunfo</h1>
-        <Form
-          { ...this.state }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          { ...this.state }
-          hasButton={ false }
-        />
+        <div className="creation-section">
+          <Form
+            { ...this.state }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <div className="preview">
+            <h2>Pré-visualização</h2>
+            <Card
+              { ...this.state }
+              hasButton={ false }
+            />
+          </div>
+        </div>
         <DeckOfCards deck={ deck } onDeleteButtonClick={ this.onDeleteButtonClick } />
       </div>
     );

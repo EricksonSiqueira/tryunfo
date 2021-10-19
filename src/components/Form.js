@@ -18,7 +18,8 @@ class Form extends React.Component {
       hasTrunfo,
     } = this.props;
     return (
-      <form>
+      <form className="form">
+        <h2>Adicionar nova carta</h2>
         <label htmlFor="name">
           Nome
           <input

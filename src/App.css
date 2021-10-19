@@ -1,0 +1,27 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  background-color: tomato;
+}
+.creation-section {
+  display: flex;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.preview{
+  background-color: #023031;
+}
+
+.deck-of-cards{
+  display: flex;
+  background-color: aqua;
+}
+.card-filter-form{
+  display: flex;
+  flex-direction: column;
+}
