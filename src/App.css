@@ -1,20 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap');
+
+* {
+  font-family: 'Epilogue', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  border-bottom: 1px solid black;
+}
+
 .app {
   display: flex;
   flex-direction: column;
-  background-color: tomato;
+  background-color: #fff;
+  align-items: center;
 }
 .creation-section {
   display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: blue;
+}
+
+.form-section {
+  width: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #fff;
+  width: 400px;
 }
 
 .preview{
   background-color: #023031;
+  width: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-content {
+  width: 370px;
 }
 
 .deck-of-cards{
@@ -24,4 +58,8 @@
 .card-filter-form{
   display: flex;
   flex-direction: column;
+}
+
+#cardTrunfo {
+  margin-right: 10px;
 }

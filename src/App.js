@@ -160,20 +160,23 @@ class App extends React.Component {
     } = this.state;
     return (
       <div className="app">
-        <h1>Tryunfo</h1>
         <div className="creation-section">
-          <Form
-            { ...this.state }
-            onInputChange={ this.onInputChange }
-            onSaveButtonClick={ this.onSaveButtonClick }
-          />
-          <div className="preview">
-            <h2>Pré-visualização</h2>
-            <Card
+          <section className="form-section">
+            <Form
               { ...this.state }
-              hasButton={ false }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
             />
-          </div>
+          </section>
+          <section className="preview">
+            <section className="preview-content">
+              <h2>Pré-visualização</h2>
+              <Card
+                { ...this.state }
+                hasButton={ false }
+              />
+            </section>
+          </section>
         </div>
         <DeckOfCards deck={ deck } onDeleteButtonClick={ this.onDeleteButtonClick } />
       </div>
