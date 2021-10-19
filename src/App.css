@@ -163,4 +163,10 @@ h1{
   color: #fff;
 }
 
-
+.tryunfo {
+  position: absolute;
+  top: -295px;
+  right: -60px;
+  width: 100px;
+  height: 100px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Attribute from './Attribute';
+import tryunfoImg from '../img/tryunfo.png';
 
 class Card extends React.Component {
   render() {
@@ -64,7 +65,10 @@ class Card extends React.Component {
               >
                 {cardRare}
               </span>
-              {cardTrunfo === true && <span data-testid="trunfo-card">Super Trunfo</span>}
+              {
+                cardTrunfo === true
+                && <img src={ tryunfoImg } alt="tryunfo" className="tryunfo" />
+              }
             </div>
           </div>
           {
