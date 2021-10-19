@@ -66,7 +66,7 @@ h1{
 }
 
 .preview-content > h2 {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .card-outer {
@@ -121,11 +121,39 @@ h1{
   max-width: 100%;
 }
 
+.bg-red {
+  color: #fff;
+  background-color: #c20808;
+}
+.bg-blue {
+  color: #fff;
+  background-color: #0a48f3;
+}
+.bg-yellow {
+  color: #fff;
+  background-color: #135313;
+}
+
+
 .card-attribute {
   width: 90%;
   height: 10%;
   display: flex;
   justify-content: space-between;
+}
+
+.card-attribute > span {
+  border-bottom: 1px solid black;
+}
+.card-attribute-number {
+  border-radius: 10px;
+  padding: 5% 7%;
+  position: relative;
+}
+.card-attribute-number p {
+  position: absolute;
+  top: 15%;
+  left: 40%;
 }
 
 .card-rarity {

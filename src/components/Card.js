@@ -43,17 +43,20 @@ class Card extends React.Component {
               <Attribute
                 data-testid="attr1-card"
                 cardAttr={ cardAttr1 }
-                attrName="Poder de ataque"
+                attrName="🪓 Poder de ataque"
+                bgColor={ `bg-${'red'}` }
               />
               <Attribute
                 data-testid="attr1-card"
                 cardAttr={ cardAttr2 }
-                attrName="Poder de habilidade"
+                attrName="🔮 Poder de habilidade"
+                bgColor={ `bg-${'blue'}` }
               />
               <Attribute
                 data-testid="attr1-card"
                 cardAttr={ cardAttr3 }
-                attrName="Defesa"
+                attrName="💚 Vida"
+                bgColor={ `bg-${'yellow'}` }
               />
               <span
                 data-testid="rare-card"
