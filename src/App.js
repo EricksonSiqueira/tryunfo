@@ -5,12 +5,12 @@ import DeckOfCards from './components/DeckOfCards';
 import './App.css';
 
 const defaultState = {
-  cardName: '',
+  cardName: 'Teste',
   cardDescription: '',
-  cardAttr1: '0',
-  cardAttr2: '0',
-  cardAttr3: '0',
-  cardImage: '',
+  cardAttr1: '1',
+  cardAttr2: '1',
+  cardAttr3: '1',
+  cardImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg',
   cardRare: 'normal',
   cardTrunfo: false,
   isSaveButtonDisabled: true,
@@ -21,12 +21,12 @@ class App extends React.Component {
     super();
 
     this.state = {
-      cardName: '',
+      cardName: 'Teste',
       cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
+      cardAttr1: '1',
+      cardAttr2: '1',
+      cardAttr3: '1',
+      cardImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg',
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
