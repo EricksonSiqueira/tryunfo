@@ -40,12 +40,13 @@ class DeckOfCards extends React.Component {
     const { deck, onDeleteButtonClick } = this.props;
     const { filterInputTxt, cardRareFilterValue, cardTrunfoFilterValue } = this.state;
     return (
-      <section className="deck-of-cards">
+      <section className="deck-container">
+        <hr />
         <div className="card-filter-form">
           <h4>Filtro de busca</h4>
           <input
             className="form-control"
-            placeholder="filtro"
+            placeholder="Nome da carta"
             data-testid="name-filter"
             name="filterInputTxt"
             type="text"
@@ -82,31 +83,34 @@ class DeckOfCards extends React.Component {
             />
           </div>
         </div>
-        <div className="deck-of-cards">
-          <h1>Todas as cartas</h1>
-          {
-            deck.map((cardObj, index) => {
-              const rarityFilterBool = cardRareFilterValue === 'todas'
-                ? true
-                : cardObj.cardRare === cardRareFilterValue;
+        <div>
+          <h1 className="all-cards-title">Todas as cartas</h1>
+          {deck.length === 0 && <p>Nenhuma carta criada.</p>}
+          <section className="deck-of-cards">
+            {
+              deck.map((cardObj, index) => {
+                const rarityFilterBool = cardRareFilterValue === 'todas'
+                  ? true
+                  : cardObj.cardRare === cardRareFilterValue;
 
-              const trunfoFilterBool = !cardTrunfoFilterValue
-                ? true
-                : cardObj.cardTrunfo === true;
+                const trunfoFilterBool = !cardTrunfoFilterValue
+                  ? true
+                  : cardObj.cardTrunfo === true;
 
-              if (
-                cardObj.cardName.includes(filterInputTxt)
-                && rarityFilterBool
-                && trunfoFilterBool
-              ) {
-                return (this.creatCardUsingObj(cardObj, () => {
-                  onDeleteButtonClick(index);
-                }));
-              }
+                if (
+                  cardObj.cardName.includes(filterInputTxt)
+                  && rarityFilterBool
+                  && trunfoFilterBool
+                ) {
+                  return (this.creatCardUsingObj(cardObj, () => {
+                    onDeleteButtonClick(index);
+                  }));
+                }
 
-              return '';
-            })
-          }
+                return '';
+              })
+            }
+          </section>
         </div>
       </section>
     );
