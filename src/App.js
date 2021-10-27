@@ -2,14 +2,15 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import DeckOfCards from './components/DeckOfCards';
+import './App.css';
 
 const defaultState = {
-  cardName: '',
+  cardName: 'Teste',
   cardDescription: '',
-  cardAttr1: '0',
-  cardAttr2: '0',
-  cardAttr3: '0',
-  cardImage: '',
+  cardAttr1: '1',
+  cardAttr2: '1',
+  cardAttr3: '1',
+  cardImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg',
   cardRare: 'normal',
   cardTrunfo: false,
   isSaveButtonDisabled: true,
@@ -20,12 +21,12 @@ class App extends React.Component {
     super();
 
     this.state = {
-      cardName: '',
+      cardName: 'Teste',
       cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
+      cardAttr1: '1',
+      cardAttr2: '1',
+      cardAttr3: '1',
+      cardImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg',
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
@@ -158,17 +159,25 @@ class App extends React.Component {
       deck,
     } = this.state;
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          { ...this.state }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          { ...this.state }
-          hasButton={ false }
-        />
+      <div className="app">
+        <div className="creation-section">
+          <section className="form-section">
+            <Form
+              { ...this.state }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </section>
+          <section className="preview">
+            <section className="preview-content">
+              <h2>Pré-visualização</h2>
+              <Card
+                { ...this.state }
+                hasButton={ false }
+              />
+            </section>
+          </section>
+        </div>
         <DeckOfCards deck={ deck } onDeleteButtonClick={ this.onDeleteButtonClick } />
       </div>
     );
