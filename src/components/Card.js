@@ -78,6 +78,7 @@ class Card extends React.Component {
                 data-testid="delete-button"
                 type="button"
                 onClick={ onDeleteButtonClick }
+                className="delete-button  btn btn-danger"
               >
                 Excluir
               </button>)
