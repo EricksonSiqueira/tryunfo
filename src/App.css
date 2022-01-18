@@ -46,6 +46,7 @@
 
 .preview-content {
   width: 370px;
+  height: 630px;
   text-align: center;
 }
 
@@ -164,12 +165,10 @@
 
 .deck-container{
   max-width: 1200px;
-  min-height: 120vh;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px 0;
 }
 
 .deck-of-cards {
@@ -205,7 +204,8 @@
   .creation-section {
     background-color: #fff;
     flex-direction: column;
-    margin-bottom: 570px;
+    height: 600px;
+    margin-bottom: 200px;
   }
 
   .preview {
@@ -232,16 +232,38 @@
   .card-filter-form {
     width: 100%;
   }
+
+  .deck-container {
+    margin-top: 80%;
+  }
 }
 
 @media screen and (max-width: 700px) {
   .creation-section {
-    margin-bottom: 540px;
+    margin-bottom: 290px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .creation-section {
+    margin-bottom: 330px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .creation-section {
+    margin-bottom: 400px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .creation-section {
-    margin-bottom: 510px;
+    margin-bottom: 430px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .creation-section {
+    margin-bottom: 480px;
   }
 }
