@@ -170,7 +170,7 @@ class App extends React.Component {
           </section>
           <section className="preview">
             <section className="preview-content">
-              <h2>Pré-visualização</h2>
+              <h2 className="preview-title">Pré-visualização</h2>
               <Card
                 { ...this.state }
                 hasButton={ false }
